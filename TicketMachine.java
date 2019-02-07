@@ -9,7 +9,7 @@
  * @author David J. Barnes and Michael Kolling
  * @version 2008.03.30
  */
-public class TicketMachine
+class TicketMachine
 {
     // The price of a ticket from this machine.
     private int price;
@@ -23,13 +23,24 @@ public class TicketMachine
      * Note that the price must be greater than zero, and there
      * are no checks to ensure this.
      */
+    public TicketMachine()
+    {
+        price = 1000;
+        balance = 0;
+        total = 0;
+    }
+
+    /**
+     * Constructor that takes in variable
+     */
     public TicketMachine(int ticketCost)
     {
         price = ticketCost;
         balance = 0;
         total = 0;
     }
-
+    
+    
     /**
      * Return the price of a ticket.
      */
@@ -48,6 +59,14 @@ public class TicketMachine
     }
 
     /**
+     * Return the total amount of money collected by this machine..
+     */
+    public int getTotal()
+    {
+        return total;
+    }
+    
+    /**
      * Receive an amount of money in cents from a customer.
      */
     public void insertMoney(int amount)
@@ -55,6 +74,47 @@ public class TicketMachine
         balance = balance + amount;
     }
 
+    /**
+     * Set the price of a ticket.
+     */
+    public void setPrice(int ticketCost)
+    {
+        price = ticketCost;
+        
+    }
+    
+    /**
+     * Reduce price by the given amount.
+     */
+    public void discount(int amount)
+    {
+    price = price - amount;
+    }
+    
+    /**
+     * Print instructions to user on how to use machine
+     */
+    public void prompt()
+    {
+       System.out.println("Please insert the correct amount of money."); 
+    }
+    
+    /**
+     * Print a user friendly statement about ticket price
+     */
+    public void showPrice()
+    {
+        System.out.println("The price of a ticket is " + price + " cents.");
+    }
+    
+    /**
+     * Reset machine when it is emptied
+     */
+    public void empty()
+    {
+        total = 0;
+    }
+    
     /**
      * Print a ticket.
      * Update the total collected and
